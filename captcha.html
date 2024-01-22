@@ -1,0 +1,131 @@
+<html>
+<head>
+<title>Captcha</title>
+<style>
+body {
+    line-height: 1.6;
+    margin: 1.5em;
+    
+    
+}
+
+th {
+    background-color: blue;
+    color: white;
+    padding: 0.5em 1em;
+    font-size:x-large;
+    font-family:@Arial Unicode MS;
+}
+
+td {
+    border-top: 1px solid #eee;
+    padding: 0.5em 1em;
+    background-color: lightgray;
+}
+
+input {
+    cursor: pointer;
+}
+
+.button {
+  background-color: #04AA6D; /* Green */
+  color: white;
+  border:none;
+  padding: 16px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.button1 {
+  background-color: red;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border:none;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.button5:hover {
+  background-color: #555555;
+  color: white;
+}
+input[type=text] {
+  width: 60%;
+  padding: 12px 20px;
+  
+ }
+</style>
+    
+    <script type="text/javascript">
+
+        //Created / Generates the captcha function    
+        function DrawCaptcha() {
+            var a = Math.ceil(Math.random() * 10) + '';
+            var b = Math.ceil(Math.random() * 10) + '';
+            var c = Math.ceil(Math.random() * 10) + '';
+            var d = Math.ceil(Math.random() * 10) + '';
+            var e = Math.ceil(Math.random() * 10) + '';
+            var f = Math.ceil(Math.random() * 10) + '';
+            var g = Math.ceil(Math.random() * 10) + '';
+            var code = a + ' ' + b + ' ' + ' ' + c + ' ' + d + ' ' + e + ' ' + f + ' ' + g;
+            document.getElementById("txtCaptcha").value = code
+        }
+
+        // Validate the Entered input aganist the generated security code function   
+        function ValidCaptcha() {
+            var str1 = removeSpaces(document.getElementById('txtCaptcha').value);
+            var str2 = removeSpaces(document.getElementById('txtInput').value);
+            if (str1 == str2) return true;
+            return false;
+
+        }
+
+        // Remove the spaces from the entered and generated code
+        function removeSpaces(string) {
+            return string.split(' ').join('');
+        }
+    
+ 
+    </script>
+    
+    
+    
+</head>
+<body onload="DrawCaptcha();">
+<p align=center><font color=blue size=5><b>DEEN COLLEGE OF ARTS AND SCIENCE</b></font><br />
+<font size=3><b>KDUVANGUDI - NIDUR</b></font></td></tr><br />
+<font size=3><b>MAYILADUTHURAI</b></font><br />
+<font color=red size=4><u><b>DEPARTMENT OF COMPUTER SCIENCE AND APPLICATION</b></u></font></p>
+<table align=center>
+<th>
+    
+        Welcome To Captcha<br />
+   
+</th>
+<tr>
+    <td>
+        <input type="text" id="txtCaptcha" 
+            style="background-image:url(1.jpg); text-align:center; border:none;
+            font-weight:bold; font-family:Modern" />
+        <input type="button" id="btnrefresh" class="button1 button5" value="Refresh" onclick="DrawCaptcha();" />
+    </td>
+</tr>
+<tr>
+    <td>
+        <input type="text" id="txtInput"/>    
+    </td>
+</tr>
+<tr>
+    <td>
+        <input id="Button1" type="button" class="button button5" value="Check" onclick="alert(ValidCaptcha());"/>
+    </td>
+</tr>
+</table>
+</body>
+</html>
